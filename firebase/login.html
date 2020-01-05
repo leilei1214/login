@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <title>呼叫車系統</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">   
+    <link rel="import" href="./title.html">
+</head>
+<body>
+    <div id="header"></div>
+    <main>
+        <form id="login">
+            <p>
+                <strong>使用者名稱</strong>
+                <input type="text" id="user" placeholder="請輸入使用者名稱">
+            </p>
+            <p>
+                <strong>Email</strong>
+                <input type="text" id="mail" placeholder="請輸入Email">
+            </p>
+            <input type="submit" value="登入">
+        </form>
+    </main>
+</body>
+<script>
+        var link = document.querySelector('link[rel = "import"]');
+        var header=  link.import.querySelector('header');
+        var content = header.cloneNode(true);
+        document.getElementById('header').appendChild(content.cloneNode(true));
+</script>

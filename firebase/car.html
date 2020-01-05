@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+    <title>呼叫車系統</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">   
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="import" href="./title.html">
+</head>
+
+<body>
+    <div id="header"></div>
+   
+     <main>
+            <div class="row">
+                    <div class="content">
+                        <div class="rfid_l">
+                            <!-- <ul>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">6</a></li>
+                            </ul> -->
+    
+                        </div>
+                        <div class="area_c">
+                                <div class="area">
+                                        <ul>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">1</a></li>
+                                        </ul>
+                                    </div>
+                                <div class="area">
+                                        <ul>
+                                            <li><a href="#">6</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li><a href="#">4</a></li>
+                                        </ul>
+                                    </div>
+                                <div class="area">
+                                        <ul>
+                                            <li><a href="#">9</a></li>
+                                            <li><a href="#">8</a></li>
+                                            <li><a href="#">7</a></li>
+                                        </ul>
+                                </div>
+                                </div>
+                                <div class="rfid_r">
+                                        <ul>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">1</a></li>
+                                        </ul>
+                                 </div>         
+                            </div>
+
+            </div>
+    </main>
+</body>
+<script>
+        var link = document.querySelector('link[rel = "import"]');
+        var header=  link.import.querySelector('header');
+        var content = header.cloneNode(true);
+        console.log(content );
+        document.getElementById('header').appendChild(content);
+</script>

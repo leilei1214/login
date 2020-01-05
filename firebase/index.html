@@ -1,0 +1,45 @@
+<html>
+  <head>
+      <meta charset="UTF-8">
+  </head>
+<body>
+    <span>name:</span>
+    <input type="text" id="name">
+    <input type="text" id="email">
+	<button onclick="readUserData()"> login</button>
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCRg4Bl-FDA1k48u1fymYT-VDJV3Hl7reM",
+    authDomain: "test-373e5.firebaseapp.com",
+    databaseURL: "https://test-373e5.firebaseio.com",
+    projectId: "test-373e5",
+    storageBucket: "test-373e5.appspot.com",
+    messagingSenderId: "154083517850",
+    appId: "1:154083517850:web:af50c245a6ba6aa8480623",
+    measurementId: "G-89M41XVPEY"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.database();
+</script>
+<script>
+// query();
+function query(user,email){
+  db.ref('/user/'+123).once('value',function(snapshot){
+      dataIn = snapshot.val();
+      keys = Object.keys(snapshot.val());
+      console.log(dataIn[0]['email']);
+
+  });
+}
+function readUserData(){
+  var user =$("#name").val();
+  var email =$("#email").val();
+  query(user,email);
+}
+</script>
+</html>
