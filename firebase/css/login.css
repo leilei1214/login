@@ -1,0 +1,68 @@
+main {
+  height: 100vh;
+  width: 80 main;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 280px;
+  padding: 20px;
+}
+
+main form p {
+  padding: 5px;
+}
+
+main form h4 {
+  padding-left: 15px;
+  margin: 8px auto;
+  position: relative;
+  font-size: 18px;
+  width: 100%;
+}
+
+main form input[type=text] {
+  width: calc(100% - 1em -8px);
+  font-size: 18px;
+  padding: 8px 9px;
+  padding-left: calc(1em + 4px);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0);
+}
+
+main form input[type=text]:focus {
+  border-color: dodgerblue;
+  -webkit-box-shadow: 0 0 4px dodgerblue;
+          box-shadow: 0 0 4px dodgerblue;
+  background: #fff;
+}
+
+main form input[type=submit] {
+  background-color: dodgerblue;
+  color: #fff;
+  font-size: 18px;
+  border: 0px;
+  cursor: pointer;
+  padding: 7px;
+}
+/*# sourceMappingURL=login.css.map */
