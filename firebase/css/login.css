@@ -29,8 +29,9 @@ main form {
   padding: 20px;
 }
 
-main form p {
+main form lable {
   padding: 5px;
+  with:100%;
 }
 
 main form h4 {
@@ -38,7 +39,7 @@ main form h4 {
   margin: 8px auto;
   position: relative;
   font-size: 18px;
-  width: 100%;
+/*   width: 100%; */
 }
 
 main form input[type=text] {
