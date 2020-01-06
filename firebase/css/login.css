@@ -58,6 +58,7 @@ main form input[type=text]:focus {
 }
 
 main form input[type=submit] {
+  width:100%;
   background-color: dodgerblue;
   color: #fff;
   font-size: 18px;
