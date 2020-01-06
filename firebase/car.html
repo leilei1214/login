@@ -4,6 +4,8 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">   
     <link rel="stylesheet" href="./css/style.css">
     <link rel="import" href="./title.html">
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 </head>
 
 <body>
@@ -11,54 +13,83 @@
    
      <main>
             <div class="row">
-                    <div class="content">
-                        <div class="rfid_l">
-                            <!-- <ul>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">6</a></li>
-                            </ul> -->
-    
-                        </div>
-                        <div class="area_c">
-                                <div class="area">
-                                        <ul>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">1</a></li>
-                                        </ul>
-                                    </div>
-                                <div class="area">
-                                        <ul>
-                                            <li><a href="#">6</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li><a href="#">4</a></li>
-                                        </ul>
-                                    </div>
-                                <div class="area">
-                                        <ul>
-                                            <li><a href="#">9</a></li>
-                                            <li><a href="#">8</a></li>
-                                            <li><a href="#">7</a></li>
-                                        </ul>
-                                </div>
-                                </div>
-                                <div class="rfid_r">
-                                        <ul>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">1</a></li>
-                                        </ul>
-                                 </div>         
-                            </div>
+                <div class="content">
+                    <div class="rfid_l">
+                        <!-- <ul>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">6</a></li>
+                        </ul> -->
 
+                    </div>
+                    <div class="area_c">
+                    </div>
+
+                    <div class="rfid_r">
+                        <div>
+                            <ul>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">1</a></li>
+                            </ul>
+                        </div>         
+                    </div>
             </div>
     </main>
 </body>
+<script>
+    if(localStorage.getItem("user")==null){
+        console.log(localStorage.getItem("user"));
+        console.log("123");
+        window.location.href="./login.html";
+    }
+</script>
 <script>
         var link = document.querySelector('link[rel = "import"]');
         var header=  link.import.querySelector('header');
         var content = header.cloneNode(true);
         console.log(content );
         document.getElementById('header').appendChild(content);
+</script>
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCRg4Bl-FDA1k48u1fymYT-VDJV3Hl7reM",
+      authDomain: "test-373e5.firebaseapp.com",
+      databaseURL: "https://test-373e5.firebaseio.com",
+      projectId: "test-373e5",
+      storageBucket: "test-373e5.appspot.com",
+      messagingSenderId: "154083517850",
+      appId: "1:154083517850:web:af50c245a6ba6aa8480623",
+      measurementId: "G-89M41XVPEY"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.database();
+</script>
+<script>
+    query();
+    function query(){
+        db.ref('/table/'+'local').on('value',function(snapshot){
+            a = snapshot.val();
+            keys = Object.keys(snapshot.val());
+            // console.log(a[keys[1]]);
+            let content='';
+            for(var i=1;i<=keys.length-1;i++){
+ 
+                if( i % 3 == 1){
+                    content+=`<div class="area">`
+                    content +=`<ul><li><a id="${i}">${a[keys[i]]}</a></li>`
+                }
+                else if(i % 3 == 0){
+                    content +=`<li><a id="${i}">${a[keys[i]]}</a></li>`
+                    content +=`</ul></div>`
+                }else{
+                    content +=`<li><a id="${i}">${a[keys[i]]}</a></li>`
+                }
+                
+            }
+            $('.area_c').html(content);
+        })
+    }
 </script>
