@@ -12,10 +12,16 @@
                             <ul>
                                 <li> 
                                      <!-- <a href="#">2507實驗室地圖</a> -->
-                                    <a href="#"><div>2507</div><div>實驗室地圖</div></a>
+                                    <a href="./car.html"><div>室內貨物</div><div>區域圖</div></a>
                                 </li>
                                 <li>
-                                    <a href="#">登入</a>
+                                    <a href="./car2.html">編輯</a>
+                                </li>
+                                <li>
+                                    <a href="./login.html">登入</a>
+                                </li>
+                                <li>
+                                    <a href="./login.html" onclick="logout()">登出</a>
                                 </li>
                             </ul>
                         </div>
@@ -23,3 +29,10 @@
                 </div>
     </header> 
 </body>
+<script>
+    function logout(){
+        window.location.href="./login.html";
+        localStorage.clear();
+    } 
+        
+</script>
