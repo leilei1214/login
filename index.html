@@ -48,6 +48,7 @@
                 .then(response => response.json())
                 .then(userInfo => {
                     document.getElementById('userInfo').innerHTML = `
+                        <h2>LoggedID in as: ${userInfo.userId}</h2>
                         <h2>Logged in as: ${userInfo.displayName}</h2>
                         <img src="${userInfo.pictureUrl}" alt="Profile Picture">
                     `;
