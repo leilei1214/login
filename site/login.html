@@ -460,7 +460,7 @@
       function line_login(){
           var client_id = "1661291645"
           var response_type = "code"
-          var redirect_uri = "https://leilei1214.github.io/login/index.html"
+          var redirect_uri = "https://leilei1214.github.io/login/site/login.html"
           var state =  NewGuid().toUpperCase()
           const LineLoginUrl = "https://access.line.me/oauth2/v2.1/authorize?scope=profile%20openid&client_id=" + client_id + "&response_type=" + response_type + "&redirect_uri=" + redirect_uri + "&state=randomstring&nonce=randomnonce";
           window.location.href = LineLoginUrl;
@@ -488,7 +488,7 @@
                 body: new URLSearchParams({
                     'grant_type': 'authorization_code',
                     'code': code,
-                    'redirect_uri': 'https://leilei1214.github.io/login/index.html',
+                    'redirect_uri': "https://leilei1214.github.io/login/site/login.html",
                     'client_id': '1661291645',
                     'client_secret': '3d1df453deb161a633a2166417b944f8',
                 })
