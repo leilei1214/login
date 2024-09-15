@@ -6,16 +6,54 @@
     <title>LINE Login Example</title>
 </head>
 <body>
-    <h1>LINE Login Example</h1>
     
     <!-- LINE Login Button -->
-    <a href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1661291645&redirect_uri=https://leilei1214.github.io/login/index.html&state=randomstring&scope=profile%20openid&nonce=randomnonce">
-        <img src="https://d.line-scdn.net/r/ti/p/button.png" alt="LINE Login">
-    </a>
 
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+          <div class="content-wrapper d-flex align-items-center auth">
+            <div class="row flex-grow">
+              <div class="col-lg-4 mx-auto ">
+                <div class="auth-form-light text-left p-5 ">
+                  <div class="brand-logo d-flex justify-content-center">
+                    <img src="assets/images/logo.png" alt="logo">
+                  </div>
+                  <h4 class="brand-logo d-flex justify-content-center" style="font-weight: 900;">圖斯特俱樂部活動報名系統</h4>
+  
+                <div class=" d-flex justify-content-center">
+                  <button class="btn btn-inverse-info btn-fw d-flex justify-content-center" onclick="line_login()">
+                    <img src="./assets/images/icon/icon_line.svg" alt="" style="width: 30px;margin-right: 20px;">
+                    <span style="line-height: 30px;font-weight: 900;">使用line登入</span>
+                </button>              
+              </div>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+      </div>
     <!-- Display result from LINE Login -->
     <div id="userInfo"></div>
+    <script>
+        function line_login(){
+            var client_id = "1661291645"
+            var response_type = "code"
+            var redirect_uri = "https://leilei1214.github.io/login/index.html"
+            var state =  NewGuid().toUpperCase()
+            const LineLoginUrl = "https://access.line.me/oauth2/v2.1/authorize?scope=profile%20openid&client_id=" + client_id + "&response_type=" + response_type + "&redirect_uri=" + redirect_uri + "&state=randomstring&nonce=randomnonce";
+            window.location.href = LineLoginUrl;
+        }
+        const g = function () {
+            return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
 
+        }
+        const NewGuid = function () {
+            return (g() + g() + "-" + g() + "-" + g() + "-" + g() + "-" + g() + g() + g());
+        }
+    </script>
     <script>
         // URLパラメータからLINEの認証コードを取得
         const urlParams = new URLSearchParams(window.location.search);
