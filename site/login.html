@@ -516,6 +516,7 @@
                           console.log("使用者資料:", userData);
                       } else {
                           alert("該使用者尚未註冊");
+                          addUser(userId,displayName)
                       }
                   });
                   // 更新用戶界面
@@ -589,7 +590,7 @@
                 callback(true, snapshot.val());
             } else {
                 // 沒有找到相符的 email，使用者尚未註冊
-                addUser(userId,displayName)
+                callback(false, null);
             }
         });
     }
