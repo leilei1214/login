@@ -594,7 +594,14 @@
           // 使用 set() 在指定 userId 下设置数据
           db.ref('/user/login/').push({
               username: user,
-              userID: userId
+              userID: userId,
+              tag:0,//未設標籤
+              Appearances:0,//出席
+              Absences:0,//未出席
+              Unpaid:0,//未繳費
+              Assists:0,//助攻
+              Goals:0,//得分
+              level:3//階級1管理員，2隊長，3會員
           })
           .then(() => {
               alert("使用者新增成功");
