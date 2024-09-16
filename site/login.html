@@ -142,7 +142,7 @@
               <div class="rd-navbar-main-top">
                 <div class="rd-navbar-main-container container">
                   <!-- RD Navbar Brand-->
-                  <div class="rd-navbar-brand"><a class="brand" href="./"><img class="brand-logo " src="images/logo-soccer-default-95x126.png" alt="" width="95" height="126"/></a>
+                  <div class="rd-navbar-brand"><a class="" href="./"><img class="brand-logo " src="images/logo.png" alt="" width="95" height="126"/></a>
                   </div>
                   <!-- RD Navbar List-->
                   <ul class="rd-navbar-list">
@@ -456,6 +456,8 @@
     <!-- Javascript-->
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+
     <script>
       function line_login(){
           var client_id = "1661291645"
@@ -504,15 +506,87 @@
                 })
                 .then(response => response.json())
                 .then(userInfo => {
-                    document.getElementById('userInfo').innerHTML = `
-                        <h2>LoggedID in as: ${userInfo.userId}</h2>
-                        <h2>Logged in as: ${userInfo.displayName}</h2>
-                        <img src="${userInfo.pictureUrl}" alt="Profile Picture">
-                    `;
-                });
+                  // 這裡的 userId 和 displayName 是來自 Firebase 中的用戶信息
+                  const userId = userInfo.userId;
+                  const displayName = userInfo.displayName;
+
+                  // 更新用戶界面
+                  // document.getElementById('userInfo').innerHTML = `
+                  //     <h2>Logged in as: ${userId}</h2>
+                  //     <h2>Display Name: ${displayName}</h2>
+                  //     <img src="${userInfo.pictureUrl}" alt="Profile Picture">
+                  // `;
+
+                  // 將用戶信息推送到 Firebase
+                  // 確保 Firebase 已經正確初始化
+                  setTimeout(() => {
+                    db.ref('/user/login/').push({
+                        username: displayName,
+                        userID: userId
+                    })
+                    .then(() => {
+                        alert('User added successfully');
+                    })
+                    .catch((error) => {
+                        console.error('Error adding user:', error);
+                        alert('Failed to add user');
+                    });
+                  }, 3000); // 延遲 1 秒
+                  alert(535)
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+                  alert('An error occurred');
+              });
             })
             .catch(error => console.error('Error:', error));
         }
+    </script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCRg4Bl-FDA1k48u1fymYT-VDJV3Hl7reM",
+        authDomain: "test-373e5.firebaseapp.com",
+        databaseURL: "https://test-373e5.firebaseio.com",
+        projectId: "test-373e5",
+        storageBucket: "test-373e5.appspot.com",
+        messagingSenderId: "154083517850",
+        appId: "1:154083517850:web:af50c245a6ba6aa8480623",
+        measurementId: "G-89M41XVPEY"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      var db = firebase.database();
+    </script>
+    <script>
+      function query(user,email){
+          db.ref('/user/'+123).once('value',function(snapshot){
+              dataIn = snapshot.val();
+              keys = Object.keys(snapshot.val());
+              if(email == dataIn['email'] && user == dataIn['username']){
+                  window.localStorage.setItem("user",user);
+                  document.location.href="./car.html";
+              }
+              else{
+                  alert("使用者名稱或Email錯誤");
+              }
+
+          });
+      }
+      function addUser(userId, user) {
+          // 使用 set() 在指定 userId 下设置数据
+          db.ref('/user/login/').push({
+              username: user,
+              userID: userId
+          })
+          .then(() => {
+              alert("使用者新增成功");
+          })
+          .catch((error) => {
+              console.error("新增使用者時發生錯誤:", error);
+              alert("新增使用者失敗");
+          });
+      }
     </script>
   </body>
 </html>
