@@ -510,15 +510,8 @@
                   const userId = userInfo.userId;
                   const displayName = userInfo.displayName;
                   // 使用範例
-                  checkIfUserExists(userId, displayName,function(isRegistered, userData) {
-                      if (isRegistered) {
-                          alert("該使用者已經註冊過了");
-                          console.log("使用者資料:", userData);
-                      } else {
-                          alert("該使用者尚未註冊");
-                          addUser(userId,displayName)
-                      }
-                  });
+                  checkIfUserExists(isRegistered,userData)
+
                   // 更新用戶界面
                   // document.getElementById('userInfo').innerHTML = `
                   //     <h2>Logged in as: ${userId}</h2>
@@ -587,10 +580,11 @@
         db.ref('/user/login/').orderByChild('userID').equalTo(userId).once('value', function(snapshot) {
             if (snapshot.exists()) {
                 // 如果找到相符的 email，使用者已經註冊
-                callback(true, snapshot.val());
+                alert("sucess")
             } else {
                 // 沒有找到相符的 email，使用者尚未註冊
-                callback(false, null);
+                addUser(userId,displayName)
+                // callback(false, null);
             }
         });
     }
